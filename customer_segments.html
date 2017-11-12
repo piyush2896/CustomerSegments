@@ -18856,16 +18856,18 @@ AAAjBCYAAIAR/w8kmPbjJOs7EQAAAABJRU5ErkJggg==
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The Component covering the most variance of a feature is the one which explains that feature the most. In the given scenario:</p>
 <ul>
-<li>Dimension 1 has a maximum grasp over the feature variances with a explained variance score of 0.4419. This means that around 45% of the data variation is being covered by this component. The most variation covered is in the feature dimension of Fresh substances and negative maxmimum variation is covered for feature Detergent_Paper. This dimension has a strong inverse relation with Detergent_Papers feature.</li>
-<li>Dimension 2 has a explained variance of 0.2723. Thus explaining us around 27% of data variation. This feature has a moderate variation coverage as compared to first principal dimension. But it has a strong inverse relation with Fresh, Frozen and Delicatessen features.</li>
+<li>Dimension 1 has a maximum grasp over the feature variances with a explained variance score of 0.4419. This means that around 45% of the data variation is being covered by this component. The most variation covered is in the feature dimension of Fresh substances and for feature Detergent_Paper (negative maxmimum variation - the variation covered is important and has no affect from the sign).</li>
+<li>Dimension 2 has a explained variance of 0.2723. Thus explaining us around 27% of data variation. This feature has a moderate variation coverage as compared to first principal dimension. But it has a strong relation with Fresh, Frozen and Delicatessen features.</li>
+<li>This difference in value helps us make a differentiation on the basis of variance between different features of the data. For example, 1st PC has a high variance for Grocery, Milk and Detergent Papers and low for Fresh, Frozen and Delicatessen. Thus we can directly see the formation of different sub groupings in data with just 1st PC.</li>
 </ul>
 <p>The next 4 dimensions have a significantly low explained variance impact. But there are certain key features about them:</p>
 <ul>
-<li>Dimension 3 has a strong inverse relation with <em>Fresh</em> feature and a relatively strong relation with Delicatessen.</li>
-<li>Dimension 4 has a strong inverse relation with <em>Delicatessen</em> feature.</li>
-<li>Dimension 5 has a very strong positive relation with <em>Milk</em> feature and a strong inverse relation with <em>Detergents_Paper</em> feature.</li>
-<li>Dimension 6 has a very strong inverse relation with <em>Grocery</em> feature and a strong positive relation with <em>Milk</em> feature.</li>
+<li>Dimension 3 has a strong  relation with <em>Fresh</em> feature and a relatively strong relation with Delicatessen.</li>
+<li>Dimension 4 has a strong relation with <em>Delicatessen</em> feature.</li>
+<li>Dimension 5 has a very strong positive relation with <em>Milk</em> feature and a strong relation with <em>Detergents_Paper</em> feature.</li>
+<li>Dimension 6 has a very strong relation with <em>Grocery</em> feature and a strong positive relation with <em>Milk</em> feature.</li>
 </ul>
+<p>Note: The signs were marked before as inverse relation. Yet it doesn't really matter as the amount of variation is much more important than the direction</p>
 
 </div>
 </div>
@@ -21467,7 +21469,18 @@ Sample points are:</p>
 The two main customer segments derived here are:</p>
 <p><strong>Customer Segment 0</strong>: Customers of high spending on Grocery, Detergents_Paper and Milk - basically based on every day products available from supermarket. <br/>
 <strong>Customer Segment 1</strong>: Customers of low spending on Grocery and other stuff and moderate spending on Frozen goods or other eateries. The people who are more likely to spend money on variety of things and are less likely to spend more.</p>
-<p>Thus, people in customer segment 0 will be more affected by reducing the number of deivery days to 3 as they are likely to spend more on daily use stuff than custoners in segement 0. So, I think there will be a negative impact from customers in segment 0 and a positive impact from customers in segment 1. But, since customers in segment 0 are tend to spend more, there can be a greater negative impact</p>
+<p>Thus, people in customer segment 0 will be more affected by reducing the number of deivery days to 3 as they are likely to spend more on daily use stuff than custoners in segement 0.</p>
+<ul>
+<li><p><strong>Order of Testing</strong><br/>
+&nbsp;&nbsp;1. Take 4 random samples 2 from each cluster.<br/>
+&nbsp;&nbsp;2. Take 2 samples out of 4 selected (1 from each cluster) and test for delivery service for 5 days.<br/>
+&nbsp;&nbsp;3. Take the remaining 2 samples and test for delivery service for 3 days.<br/>
+&nbsp;&nbsp;4. Record the cluster-wise impact on behavior of samples.<br/>
+&nbsp;&nbsp;4. Report Findings.</p>
+</li>
+<li><p>I think there will be a negative impact from customers in segment 0 and a positive impact from customers in segment 1. But, since customers in segment 0 are tend to spend more on daily need products, there can be a greater negative impact.</p>
+</li>
+</ul>
 
 </div>
 </div>
@@ -21495,8 +21508,9 @@ The two main customer segments derived here are:</p>
 <ul>
 <li>Use Gaussian Mixture Models to make customer segments. In this case 2 - Customers with higher spending needs and Customers with moderate to lower spending needs.</li>
 <li>Label data with these segments. 1 for higher spending and 0 for moderate to lower spending or vice-versa.</li>
-<li>Apply Supervised learning techniques like boosting or SVM to perform classificiation on data.</li>
+<li>Apply Supervised learning techniques like boosting or SVM on pca transformed data to perform classificiation on data.</li>
 </ul>
+<p>Side Note: We can use different number of PCs and perform kind of boosting over them to find the best classifier</p>
 
 </div>
 </div>
